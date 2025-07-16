@@ -201,6 +201,32 @@
   display: block;
   transition: transform 0.3s ease;
 }
+.gallery-item .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.gallery-item:hover .overlay {
+  opacity: 1;
+}
+
+/* Overlay text */
+.overlay-text {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
 
 .gallery-item:hover img {
   transform: scale(1.05);
@@ -214,8 +240,35 @@
 
 /* Non-fullscreenable items */
 .gallery-item.github-link {
-  cursor: default;
+  position: relative;
+  overflow: hidden;
 }
+.gallery-item.github-link .overlay.always-visible {
+  opacity: 1;
+  pointer-events: none;
+}
+
+.gallery-item.github-link .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; /* allows clicking the <a> through it */
+}
+
+.gallery-item.github-link .overlay-text {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+
 .gallery-item.github-link img {
   pointer-events: none;
 }
@@ -275,22 +328,61 @@
   </div>
 
   <div class="content"> <!-- --------------------------------------------------------------------------------------------------------- -->
-    <h2>My Projects</h2>
+    <h2>My Artworks</h2>
     <div class="gallery">
       <div class="gallery-item">
         <img src="Etheral.png" alt="Long Night">
+        <div class="overlay">
+          <div class="overlay-text">Long Night</div>
+        </div>
       </div>
       <div class="gallery-item special" style="grid-column: span 2;">
         <img src="DeathAngel2.png" alt="Death Angel" style="object-position: center -125px;">
+        <div class="overlay">
+          <div class="overlay-text">Death Angel</div>
       </div>
+      </div>
+      <div class="gallery-item">
+        <img src="TotalDoku.png" alt="Absolute Doku">
+        <div class="overlay">
+          <div class="overlay-text">Absolute Doku</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="Yee.png" alt="Yee">
+        <div class="overlay">
+          <div class="overlay-text">Yee...</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="Haw.png" alt="Haw">
+        <div class="overlay">
+          <div class="overlay-text">...haw</div>
+        </div>
+      </div>
+    </div>
+    <h3 style="background: black; color:lightslategray; text-align: center;">Artwork not permitted to be used for any artificial inteligence related purposes</h3>
+    <h3 style="background: black; color:lightslategray; text-align: center;">Artwork can be shared and used only if i am credited</h3>
+    <h2>My Other Projects</h2>
+    <div class="gallery">
       <div class="gallery-item github-link">
         <a href="https://github.com/Gierownik/OOA-Server-Editor" target="_blank">
           <img src="servereditorexample.png" alt="Server Editor">
+          <div class="overlay always-visible">
+            <div class="overlay-text">Out of Action Server Editor</div>
+          </div>
+        </a>
+      </div>
+      <div class="gallery-item github-link">
+        <a href="https://github.com/Gierownik/Augment-scraper" target="_blank">
+          <img src="Dbexample.png" alt="Database">
+          <div class="overlay always-visible">
+            <div class="overlay-text">Out of Action Database</div>
+          </div>
         </a>
       </div>
       <!-- Add more items as needed -->
     </div>
-    
   </div>
 
   <script>
